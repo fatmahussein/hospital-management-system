@@ -11,3 +11,5 @@ bin/rails assets:clean
 # database migrations like this one from the build command
 # to the pre-deploy command:
 bin/rails db:migrate
+
+
