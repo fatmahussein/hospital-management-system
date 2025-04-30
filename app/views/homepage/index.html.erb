@@ -1,11 +1,15 @@
-<main class="max-w-6xl mx-auto px-4">
-<% if user_signed_in? %>
-  Logged in as <%= current_user.email %> | <%= button_to 'Logout', destroy_user_session_path, method: :delete %>
-<% end %>
-
-  <div class="flex justify-center text-center">
-  <h1 class="text-3xl font-bold underline">
-  Hello world!
-</h1>
+<nav class="bg-gray-800 text-white px-6 py-4">
+  <div class="container mx-auto flex justify-between items-center">
+    <div class="text-lg font-semibold">Hospital Management System</div>
+    <% if user_signed_in? %>
+      <div class="flex items-center gap-4">
+        <span>Logged in as <%= current_user.email %></span>
+        <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "bg-red-600 hover:bg-red-700 text-white font-semibold py-1 px-3 rounded" %>
+      </div>
+    <% end %>
   </div>
-</main>
+</nav>
+
+<div class="w-full min-h-screen bg-gray-100 flex items-center justify-center">
+  <h1 class="text-4xl font-bold text-gray-800">Hello, world!</h1>
+</div>
