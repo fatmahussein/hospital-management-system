@@ -1,0 +1,26 @@
+<% content_for :title, "Showing patient" %>
+
+<%= turbo_frame_tag "main_content" do %>
+  <div class="patients w-full">
+    <% if notice.present? %>
+      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+    <% end %>
+
+    <div class="flex justify-between items-center mb-6">
+      <h1 class="font-bold text-4xl">Patient Details</h1>
+      <div class="space-x-2">
+        <%= link_to "Edit", edit_patient_path(@patient), data: { turbo_frame: "main_content" }, class: "rounded-md px-3.5 py-2.5 bg-yellow-500 hover:bg-yellow-400 text-white font-medium" %>
+        <%= link_to "Back", patients_path, class: "rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 font-medium" %>
+        <%= button_to "Delete", @patient, method: :delete, data: { turbo_confirm: "Are you sure?" },
+            form_class: "inline-block", class: "rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium" %>
+      </div>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow max-w-2xl">
+      <p class="mb-4"><strong class="text-gray-600">Name:</strong> <%= @patient.name %></p>
+      <p class="mb-4"><strong class="text-gray-600">Age:</strong> <%= @patient.age %></p>
+      <p class="mb-4"><strong class="text-gray-600">Gender:</strong> <%= @patient.gender %></p>
+      <p><strong class="text-gray-600">Phone:</strong> <%= @patient.phone %></p>
+    </div>
+  </div>
+<% end %>

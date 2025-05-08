@@ -1,15 +1,50 @@
-<nav class="bg-gray-800 text-white px-6 py-4">
+<nav class="nav bg-white text-primary px-6 py-4">
   <div class="container mx-auto flex justify-between items-center">
-    <div class="text-lg font-semibold">Hospital Management System</div>
+    <div class="text-lg font-semibold">
+    <h1>
+    Hospital Management System
+    </h1>
+    </div>
     <% if user_signed_in? %>
       <div class="flex items-center gap-4">
-        <span>Logged in as <%= current_user.email %></span>
-        <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "bg-red-600 hover:bg-red-700 text-white font-semibold py-1 px-3 rounded" %>
+        <span class="italic">Logged in as <%= current_user.email %></span>
+        <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "bg-primary hover:bg-red-700 text-white font-semibold py-1 px-3 rounded" %>
       </div>
     <% end %>
   </div>
 </nav>
 
-<div class="w-full min-h-screen bg-gray-100 flex items-center justify-center">
-  <h1 class="text-4xl font-bold text-gray-800">Hello, world!</h1>
+<div class="grid grid-cols-12 min-h-screen">
+  <!-- Sidebar -->
+  <aside class="col-span-3 bg-white border-r border-gray-300 p-4">
+    <div class="menu">
+    <ul class="space-y-4 text-gray-700">
+
+      <li class="flex items-center gap-2">
+       <%= link_to patients_path, data: { turbo_frame: "main_content" }, class: "hover:text-primary flex items-center gap-2" do %>
+         <i class="fas fa-user-md"></i>
+          <span>Patients</span>
+       <% end %>
+      </li>
+
+      <li class="flex items-center gap-2">
+        <i class="fas fa-pills"></i>
+        <a href="#" class="hover:text-primary">Medications</a>
+      </li>
+
+      <li class="flex items-center gap-2">
+        <i class="fas fa-calendar-alt"></i>
+        <a href="#" class="hover:text-primary">Appointments</a>
+      </li>
+    </ul>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="col-span-9 p-6 bg-gray-100">
+  <turbo-frame id="main_content">
+  <h1 class="text-3xl font-semibold text-gray-800 mb-4">Dashboard</h1>
+  <p class="text-gray-600">Welcome to the Hospital Management System.</p>
+  </turbo-frame>
+  </main>
 </div>

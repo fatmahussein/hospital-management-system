@@ -1,0 +1,54 @@
+<div class="patients w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="font-bold text-4xl">Patients</h1>
+    <%= link_to "New patient", new_patient_path, data: { turbo_frame: "main_content" }, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+  </div>
+
+  <% if patients.any? %>
+    <div class="overflow-x-auto">
+      <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow">
+        <thead class="bg-gray-100 text-left text-gray-700">
+          <tr>
+            <th class="px-4 py-3 border-b">Index</th>
+            <th class="px-4 py-3 border-b">Name</th>
+            <th class="px-4 py-3 border-b">Age</th>
+            <th class="px-4 py-3 border-b">Gender</th>
+            <th class="px-4 py-3 border-b">Phone</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+        <% patients.each_with_index do |patient, index| %>
+          <tr class="<%= index.even? ? 'bg-gray-100' : '' %> hover:bg-blue-50">
+            <td class="px-4 py-3">
+              <%= link_to (index + 1), patient_path(patient), data: { turbo_frame: "main_content" }, class: "block w-full h-full" %>
+            </td>
+            <td class="px-4 py-3">
+              <%= link_to patient.name, patient_path(patient), data: { turbo_frame: "main_content" }, class: "block w-full h-full" %>
+            </td>
+            <td class="px-4 py-3">
+              <%= link_to patient.age, patient_path(patient), data: { turbo_frame: "main_content" }, class: "block w-full h-full" %>
+            </td>
+            <td class="px-4 py-3">
+              <%= link_to patient.gender, patient_path(patient), data: { turbo_frame: "main_content" }, class: "block w-full h-full" %>
+            </td>
+            <td class="px-4 py-3">
+              <%= link_to patient.phone, patient_path(patient), data: { turbo_frame: "main_content" }, class: "block w-full h-full" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+      
+      
+      
+      </table>
+    </div>
+  <% else %>
+    <p class="text-center my-10">No patients found.</p>
+  <% end %>
+</div>
+
+

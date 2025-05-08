@@ -5,14 +5,58 @@
  * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
  * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
  * depending on specificity.
- *
+
+ * = require tailwind/application
+
  * Consider organizing styles into separate files for maintainability.
  */
+ 
  @import "tailwindcss";
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Syne:wght@400..800&display=swap');
 
- @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Syne:wght@400..800&display=swap');
+:root {
+    --primary : #4f39f6
+}
  
+
+.nav{
+    color: var(--primary);
+}
+.nav h1{
+    font-family: syne;
+}
+.nav button{
+    background-color: var(--primary);
+}
+.menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: rubik;
+    font-weight: 500;
+    margin: auto;
+    margin-top: 20px;
+}
+.menu ul{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    padding: 10px;
+}
+.menu ul li{
+    padding: 10px;
+}
+ul li:hover{
+    color: var(--primary);
+    background-color: rgb(243, 237, 237);
+    border-radius: 10px;
+}
+.patients{
+    padding: 30px;
+}
+.form{
+    width: 90%;
+}
