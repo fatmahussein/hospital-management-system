@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :appointments
+  get 'patients/search', to: 'patients#search'
   resources :patients
   devise_for :users
   get "homepage/index"
@@ -15,4 +16,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
    root "homepage#index"
+
 end

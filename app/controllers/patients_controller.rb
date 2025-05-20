@@ -10,6 +10,14 @@ class PatientsController < ApplicationController
     end
   end
 
+def search
+  query = params[:query].to_s.strip
+  patients = Patient.where("name ILIKE ?", "%#{query}%").limit(10)
+  render json: patients.select(:id, :name)
+end
+
+
+  
   # GET /patients/1 or /patients/1.json
   def show
     @patient = Patient.find(params[:id])
@@ -84,7 +92,7 @@ class PatientsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_patient
-      @patient = Patient.find(params.expect(:id))
+      @patient = Patient.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
