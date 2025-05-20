@@ -30,7 +30,7 @@ export default class extends Controller {
             this.resultsTarget.appendChild(li);
           });
         });
-    }, 300); // debounce
+    }, 100); // debounce
   }
 
   select(patient) {
